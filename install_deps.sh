@@ -20,11 +20,11 @@ function red() {
 }
 color_green='\033[32;1m'
 function green() {
-  echo -e "${color_green}$@${color_clear}" 
+  echo -e "${color_green}$@${color_clear}"
 }
 color_yellow='\033[33;1m'
 function yellow() {
-  echo -e "${color_yellow}$@${color_clear}" 
+  echo -e "${color_yellow}$@${color_clear}"
 }
 
 # Determine OS platform
@@ -56,9 +56,9 @@ if [ "$DISTRO" == "Ubuntu" ]; then
   # Needed by various secondary scripts
   sudo apt-get install pv doxygen ant
   # We need gcovr 3, and Ubuntu only installs gcovr 2
-  sudo pip install gcovr
+  sudo pip3 install gcovr
   # Needed for creating the training set
-  sudo pip install python-levenshtein
+  sudo pip3 install python-levenshtein
   set +o xtrace
 else
   yellow ""
@@ -90,7 +90,7 @@ if [ ! -e stanford-corenlp-caseless-models-current.jar ]; then
   wget http://nlp.stanford.edu/software/stanford-corenlp-caseless-models-current.jar
 fi
 if [ ! -e stanford-corenlp.jar ]; then
-  wget http://central.maven.org/maven2/edu/stanford/nlp/stanford-corenlp/3.5.2/stanford-corenlp-3.5.2.jar
+  wget http://central.maven.org/maven2/edu/stanford/nlp/stanford-corenlp/3.9.2/stanford-corenlp-3.9.2.jar
 fi
 
 green "Everyting is OK!"

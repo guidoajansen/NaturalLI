@@ -1,6 +1,7 @@
 #ifndef TYPES_H
 #define TYPES_H
 
+#include <string>
 #include <vector>
 #include <stdint.h>
 #include <algorithm>
@@ -71,7 +72,7 @@ inline uint8_t indexNatlogRelation(const std::string& natlogRelation) {
 // Typedefs
 //
 
-/** 
+/**
  * A representation of a word, tagged with various bits of
  * metadata
  */

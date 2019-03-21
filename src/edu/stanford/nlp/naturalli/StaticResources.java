@@ -109,6 +109,11 @@ public class StaticResources {
 
   public static Lazy<Map<Pair<String, Integer>, Synset[]>> SYNSETS = new Lazy<Map<Pair<String, Integer>, Synset[]>>() {
     @Override
+    public boolean isCache() {
+      return false;
+    }
+
+    @Override
     protected Map<Pair<String, Integer>, Synset[]> compute() {
       long startTime = System.currentTimeMillis();
       System.err.print("Reading synsets...");

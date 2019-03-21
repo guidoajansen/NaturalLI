@@ -16,6 +16,30 @@ import java.util.zip.GZIPInputStream;
 
 import static edu.stanford.nlp.util.logging.Redwood.Util.*;
 
+class Quintuple<T1,T2,T3,T4,T5> implements Serializable {
+
+  private static final long serialVersionUID = 6295043666955910662L;
+
+  public T1 first;
+  public T2 second;
+  public T3 third;
+  public T4 fourth;
+  public T5 fifth;
+
+  public Quintuple(T1 first, T2 second, T3 third, T4 fourth, T5 fifth) {
+    this.first = first;
+    this.second = second;
+    this.third = third;
+    this.fourth = fourth;
+    this.fifth = fifth;
+  }
+
+  public static <T1, T2, T3, T4, T5> Quintuple<T1, T2, T3, T4, T5> makeQuadruple(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5) {
+    return new Quintuple<>(t1, t2, t3, t4, t5);
+  }
+}
+
+
 /**
  * Train an entailment classifier, constrained to various degrees by natural logic.
  *
@@ -222,7 +246,7 @@ public class ClassifierTrainer {
     LinearClassifierFactory<Trilean, String> factory = new LinearClassifierFactory<>();
     switch (TRAIN_REGULARIZER) {
       case L1:
-        factory.setMinimizerCreator(() -> 
+        factory.setMinimizerCreator(() ->
             new MetaClass("edu.stanford.nlp.optimization.OWLQNMinimizer").createInstance(TRAIN_SIGMA));
         break;
       case L2:
@@ -296,6 +320,3 @@ public class ClassifierTrainer {
   }
 
 }
-
-
-
